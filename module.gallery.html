@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="css/moto.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="main">
+
+  </div>
+</body>
+<script type="text/javascript">
+  var imgs = ["img/img_1.jpg","img/img_2.jpg","img/img_3.jpg","img/img_4.jpg","img/img_5.jpg","img/img_6.jpg"];
+  var main = document.getElementById('main');
+  (function () {
+  for (var i = 0; i < imgs.length; i++) {
+    var main_item = document.createElement("div");
+    main_item.setAttribute("class", "main_item");
+    main_item.style.margin="10px";
+    main_item.style.display="inline-block";
+    main_item.style.width=(document.body.clientWidth/3)-30 + "px";
+
+    var pic = document.createElement("img");
+    main_item.appendChild(pic);
+    pic.setAttribute("src",imgs[i]);
+    pic.style.width="100%";
+    main.appendChild(main_item);
+    pic.setAttribute("onclick", "murad(this)");
+  }
+  })()
+  function murad(a) {
+    document.body.style.overflow="hidden";
+    var overlay = document.createElement("div");
+    document.body.appendChild(overlay);
+    overlay.style.position="absolute";
+    overlay.style.top="0px";
+    overlay.style.width="100%";
+    // overlay.style.height="100%";
+    overlay.style.minHeight="550%";
+    overlay.style.background="rgba(0, 0, 0, 0.9)";
+    var frame = document.createElement("div");
+    var frame_img = document.createElement("img");
+    var prew = document.createElement("button");
+    frame.appendChild(prew);
+    var next = document.createElement("button");
+    frame.appendChild(next);
+    next.innerHTML="next";
+    prew.innerHTML="prew";
+    frame.style.overflow="hidden";
+    frame_img.style.width="100%";
+    frame_img.setAttribute("src",a.src);
+
+    frame.style.width="500px";
+    frame.style.height="300px";
+    frame.style.display="inline-block";
+    frame.appendChild(frame_img);
+    overlay.appendChild(frame);
+    frame.style.position="relative";
+    frame.style.borderRadius="10px";
+    frame.style.left=(document.body.clientWidth-frame.clientWidth)/2 +"px";
+    frame.style.top=(document.body.clientHeight-frame.clientHeight)/2 +"px";
+
+    // overlay.addEventListener("click",function(){
+    //   document.body.removeChild(overlay);
+    //   document.body.style.overflow="visible";
+    // })
+
+    window.onclick = function(event) {
+    if (event.target == overlay) {
+      document.body.removeChild(overlay);
+      document.body.style.overflow="visible";
+    }
+}
+    count=0
+    next.addEventListener("click", function () {
+      count++;
+      if (count>imgs.length-1) {
+        count=0;
+      }
+      console.log(count);
+      frame_img.src=imgs[count];
+    })
+
+    prew.addEventListener("click", function() {
+      if (count==0) {
+        count=imgs.length;
+      }
+      count--;
+      frame_img.src=(imgs[count]);
+    })
+  }
+</script>
+</html>

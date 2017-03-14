@@ -1,0 +1,39 @@
+#main{
+  width: 100%;
+	box-sizing: border-box;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+#gallery{
+  position: relative;
+}
+.frame{
+  height: 370px;
+  float: left;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.frame img{
+  height: 100%;
+}
+
+/*#main{
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+#innerDiv{
+	position: relative;
+}
+.imgFrame{
+	height:370px;
+	float:left;
+	overflow:hidden;
+	box-sizing: border-box;
+}
+.imgFrame img{
+	height:100%;
+}*/
